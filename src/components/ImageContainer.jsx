@@ -8,9 +8,14 @@ const ImageContainer = () => {
   const [tags, setTags] = useState([]);
 
   const handleClick = (e) => {
-    const { pageX, pageY } = e;
-    setIsAddTagActive(true);
-    setAddTagCoordinates([pageX, pageY]);
+    e.stopPropagation();
+    if (!isAddTagActive) {
+      const { pageX, pageY } = e;
+      setIsAddTagActive(true);
+      setAddTagCoordinates([pageX, pageY]);
+    } else {
+      setIsAddTagActive(false);
+    }
   };
   const handleAddTagSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +38,6 @@ const ImageContainer = () => {
         alt="random-img"
       />
       {tags &&
-        tags.length &&
         tags.map((tag) => {
           const { id, name, positionX, positionY } = tag;
           return (
@@ -57,6 +61,7 @@ const ImageContainer = () => {
         className={`image-container__add-tag-form-container ${
           isAddTagActive ? "visible" : "hidden"
         }`}
+        onClick={(e) => e.stopPropagation()}
       >
         <form
           className="image-container__add-tag-form"
