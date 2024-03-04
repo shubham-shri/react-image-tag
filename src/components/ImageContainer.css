@@ -1,0 +1,30 @@
+.image-container {
+  width: 600px;
+  height: 400px;
+}
+
+.image {
+  width: 600px;
+  height: 400px;
+  object-fit: contain;
+}
+
+.image-container__add-tag-form-container {
+  position: absolute;
+
+  background-color: white;
+  visibility: visible;
+}
+
+.image-container__tag {
+  position: absolute;
+  background-color: white;
+}
+
+.image-container__add-tag-form-container.hidden {
+  visibility: hidden;
+}
+
+.image-container__add-tag-form {
+  display: flex;
+}
